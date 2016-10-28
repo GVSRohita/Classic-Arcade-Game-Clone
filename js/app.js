@@ -32,21 +32,42 @@ Enemy.prototype.render = function () {
     ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
 };
 
+Enemy.prototype.reset = function() {
+    this.x = 0;
+};
+
+//initialise x and y positions
+var startX = 200;
+var startY = 400;
+
 // Now write your own player class
 // This class requires an update(), render() and
 // a handleInput() method.
-var Player = function (x, y, speed) {
-    this.x = x;
-    this.y = y;
-    this.speed = speed;
+var Player = function () {
+    this.x = 200;
+    this.y = 400;
     this.sprite = 'images/char-boy.png';
 };
-Player.prototype.update = function () {
-    //some code
+
+Player.prototype.update = function() {
+    if(this.x < 0){
+        this.x = 0;
+    }
+    else if(this.x > 400){
+        this.x = 400;
+    }
+    else if(this.y > 400){
+        this.y = 400;
+    }
+    else if(this.y < 0){
+        this.y = 0;
+    }
 };
+
 Player.prototype.render = function () {
     ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
 };
+
 Player.prototype.handleInput = function (keyPress) {
     if (keypress === 'left'){
         player.x -= player.speed;
@@ -61,15 +82,12 @@ Player.prototype.handleInput = function (keyPress) {
         player.y -= player.speed;
     }
 };
-//to check the collision check between the player and enemy
-var collisionCheck = function (){
-    //some code
-};
+
 // Now instantiate your objects.
 // Place all enemy objects in an array called allEnemies
 // Place the player object in a variable called player
 var allEnemies = [];
-
+var player = new player();
 
 
 // This listens for key presses and sends the keys to your
