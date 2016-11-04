@@ -1,13 +1,64 @@
 <!DOCTYPE html>
 <html>
-<head>
-    <meta charset="UTF-8">
-    <title>Effective JavaScript: Frogger</title>
-    <link rel="stylesheet" href="css/style.css">
-</head>
-<body>
-    <script src="js/resources.js"></script>
-    <script src="js/app.js"></script>
-    <script src="js/engine.js"></script>
-</body>
+    <head>
+        <meta charset="UTF-8">
+        <title>Effective JavaScript: Frogger</title>
+        <link rel="stylesheet" href="css/style.css">
+        <link rel="stylesheet" href="css/mystyle.css">
+    </head>
+    <body class="my-body">
+        <header>
+            <h1>Classic Arcade Game Clone</h1>
+        </header>
+        <main id="mainDiv" class="container">
+            <div id="topBox">
+                </div>
+            <div id="leftBox">               
+                <h2 class="additional-information">Score:
+                    <span id="points" class="points-counter">0</span>
+                </h2>
+
+                <h2  class="additional-information">
+                    <span>Remaining Time: <span id="timer" class="time-counter">30</span>
+                </h2>                
+                <h2>Game Instructions</h2>
+                <ul>
+                    <li style="margin-left: 2px;">aaaaaa</li>
+                    <li>aaaaaa</li>
+                    <li>aaaaaa</li>
+                    <li>aaaaaa</li>
+                    <li>aaaaaa</li>
+                    <li>aaaaaa</li>
+                </ul>
+            </div>
+            <div id="centerBox"></div>
+            <div id="rightBox">
+                <div id="buttons">
+                    <button id="buttonStart" class="my-button">Start</button>
+                    <button id="buttonStop" class="my-button">Stop</button>
+                </div>                
+                <br><br><br><br><br><br><br><br><br><br><br><br>
+                <h3><span class="my-name-label">Created by:</span> <span class="my-name">G.V.Sri Rohita</span></h3>
+                <p></p>
+                <a href="http://gvsrohita.github.io/ClassicAradeClone/" target="_blank">See this on Github</a>
+                <p>Visit My Other Projects :-) also</p>
+                <a href="http://gvsrohita.github.io/OnlineResume/" target="_blank">Online Resume </a>
+                <p></p>
+                <a href="https://gvsrohita.github.io/PortfolioSite/" target="_blank">Portfolio Site </a>
+                <br>
+                <br>
+                <br>
+                <br>               
+                <span>Share <a href='mailto:gvsrohita@gmail.com?Subject=Awesome!' target='_blank'>Your Experience!</a></span>
+            </div>
+        </main>
+        <script src="js/resources.js"></script>
+        <script src="js/app.js"></script>
+        <script src="js/engine.js"></script>
+        <script src="js/myadditions.js"></script>
+        <script>
+            document.getElementById("buttonStart").addEventListener("click", gameStart);
+            document.getElementById("buttonStop").addEventListener("click", gameStop);
+        </script>
+    </body>
 </html>
