@@ -1,0 +1,141 @@
+html {
+  font-family: sans-serif; /* 1 */
+  -ms-text-size-adjust: 100%; /* 2 */
+  -webkit-text-size-adjust: 100%; /* 2 */
+}
+
+body {
+  margin: 0;
+  font-family: 'Averia Libre', calibri;
+  text-align: center;
+  background-color: gray;
+}
+
+footer {
+    width: 100%;
+}
+.container {
+    background-color: #fff;
+    width: 1200px;
+    margin: auto;       
+}
+
+.experience {
+    float: right;
+}
+
+.report {
+    float: left;
+}
+
+.points-counter {
+    color: green;
+}
+
+.time-counter {
+    color: red;
+}
+
+.additional-information {
+    color: black;
+    margin: auto;
+}
+
+h1 {
+  font-size: 2em;
+  margin: 0.67em 0;
+  margin: 0;
+  padding-top: 15px;
+  color: white;
+}
+
+header {
+  height: 75px;
+  margin: auto;
+  width: 1200px;
+  background-color: #204d74;
+  display: block;
+  /*margin: 0 175px 0 175px;*/
+}
+
+canvas {
+    margin-top: -30px;
+    margin-bottom: -30px;
+}
+
+#mainDiv {
+    height: 600px;
+}
+
+#topBox, #bottomBox {
+    height: 0;
+    width: 100%;
+    /*background-color: blue;    */
+}
+
+#leftBox {
+    width: 25%;
+    height: 600px;
+    background-color: darkgray;
+    float: left;
+    overflow: hidden;
+}
+
+#rightBox {
+    width: 25%;
+    height: 600px;
+    background-color: darkgray;
+    float: left;
+    overflow: hidden;
+}
+
+#centerBox {
+    width: 50%;
+    height: 600px;
+    float: left;
+    overflow: hidden;
+}
+
+footer {
+    width: 100%;
+}
+
+.float-left {
+    float: left;
+}
+
+.my-button {
+    text-align: center;
+    font-size: 20px;
+    width: 200px;
+    height: 40px;
+    background-color: blueviolet;
+    border-radius: 5px;
+    box-shadow: 5px 5px 5px #204d74;
+    color: white;
+    cursor: pointer;    
+}
+
+.my-button:hover {    
+    box-shadow: 5px 5px 5px #204d74;
+    background-color: #ccc;
+    color: blueviolet;
+}
+
+.my-name {
+    color: #333;   
+}
+
+.my-name-label {
+    color: #444;   
+}
+
+.my-name:hover {
+    border: blueviolet solid thin;
+    border-radius: 2px;
+    padding: 2px;
+    box-shadow: 5px 5px 5px #fff;  
+}
+
+button {
+}
