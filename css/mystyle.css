@@ -14,7 +14,7 @@ body {
 footer {
     width: 100%;
 }
-.container {
+.container, .container-modal {
     background-color: #fff;
     width: 1200px;
     margin: auto;       
@@ -63,37 +63,39 @@ canvas {
     margin-bottom: -30px;
 }
 
-#mainDiv {
+#mainDiv, #mainDivModal {
     height: 600px;
 }
 
-#topBox, #bottomBox {
-    height: 0;
+#topBox, #bottomBox, #topBoxModal, #bottomBoxModal {
+    /*height: 0;*/
     width: 100%;
     /*background-color: blue;    */
 }
 
-#leftBox {
+#leftBox, #leftBoxModal {
+    /* padding: 10px; */
     width: 25%;
-    height: 600px;
+    height: 583px;
     background-color: darkgray;
     float: left;
     overflow: hidden;
 }
 
-#rightBox {
-    width: 25%;
-    height: 600px;
+#rightBox, #rightBoxModal {
+    width: 22%;
+    height: 583px;
     background-color: darkgray;
     float: left;
     overflow: hidden;
 }
 
-#centerBox {
+#centerBox, #centerBoxModal {
     width: 50%;
     height: 600px;
     float: left;
     overflow: hidden;
+    /* opacity: 1; */
 }
 
 footer {
@@ -106,9 +108,9 @@ footer {
 
 .my-button {
     text-align: center;
-    font-size: 20px;
+    font-size: 24px;
     width: 200px;
-    height: 40px;
+    height: 50px;
     background-color: blueviolet;
     border-radius: 5px;
     box-shadow: 5px 5px 5px #204d74;
@@ -137,5 +139,60 @@ footer {
     box-shadow: 5px 5px 5px #fff;  
 }
 
+#modalDiv {
+    position: absolute;
+    background-color: #333;
+    /* opacity: 1; */
+    width: 100%; 
+    height: 700px;
+    z-index: 1;  
+}
+
+.display-block {
+    display: block;
+}
+
+.display-none {
+    display: none;
+}
+
+/*a {
+  color: inherit;
+}*/
+
+/*.instructions {
+    background-color: #ce8483; 
+}*/
+
+.space {
+    height: 200px;
+}
+
+.container {
+    padding: 20px 0 0 0;
+    align-content: center;
+    background-color: darkgray;
+}
+
+.new-score {
+    padding: 300px 0 0 0;
+}
+
+#leftBox {
+    margin-top: 17px;
+    text-align: left;
+    padding: 0 0 0 20px;
+}
+
+#rightBox {
+    margin-top: 17px;
+    text-align: left;
+}
+
 button {
+    margin-bottom: 30px;
+}
+
+#centerBoxModal {
+    background-color: #333;    
 }

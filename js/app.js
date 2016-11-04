@@ -1,4 +1,8 @@
-var game_duration = 30000;
+var game_duration = 20000;
+var game_duration_sec = game_duration/1000;
+$('#timer').text(game_duration_sec);
+//$('#modalDiv').toggle();
+window.stopGame = false;
 // Enemies our player must avoid
 var Enemy = function (x, y, speed) {
     // Variables applied to each of our instances go here,
@@ -22,8 +26,6 @@ Enemy.prototype.update = function (dt) {
     //if the enemy reaches the last point(i.e. the whole width is covered)then 
     //make the enemy come back to the original place.
     if (this.x > 505) {
-        this.reset();
-    } else if (this.y > 606) {
         this.reset();
     }
 };
@@ -69,14 +71,16 @@ Player.prototype.update = function () {
 };
 
 // reset function sets the player back to the start coordinates
-Player.prototype.reset = function (score) {
+Player.prototype.reset = function () {
     this.x = startX;
     this.y = startY;
 };
 
 function pointsCounter() {
-    var pointContainer = document.getElementById("points");
-    pointContainer.innerHTML = score;
+    var pointContainer1 = document.getElementById("points");
+    var pointContainer2 = document.getElementById("pointsModal");
+    pointContainer1.innerHTML = score;
+    pointContainer2.innerHTML = score;
 }
 
 Player.prototype.render = function () {
@@ -87,12 +91,16 @@ Player.prototype.render = function () {
 // Place all enemy objects in an array called allEnemies
 // Place the player object in a variable called player
 var allEnemies = [];
+//if(gameStart()){
 for (var i = 0; i < 3; i++) {
     var enemyX = Math.floor(Math.random() * 30);
     var enemyY = 65 + 80 * i;
     var enemySpeed = Math.floor(Math.random() * 150) + 50;
     allEnemies.push(new Enemy(enemyX, enemyY, enemySpeed));
 }
+//}else if (gameStop()){
+//   enemySpeed = 0;
+//}
 var player = new Player();
 
 // This listens for key presses and sends the keys to your
@@ -104,8 +112,9 @@ document.addEventListener('keyup', function (e) {
         39: 'right',
         40: 'down'
     };
-
-    player.handleInput(allowedKeys[e.keyCode]);
+    if (window.stopGame === false) {
+        player.handleInput(allowedKeys[e.keyCode]);
+    }
 });
 
 Player.prototype.handleInput = function (keyPress) {
@@ -132,7 +141,7 @@ function checkCollisions() {
             score -= 5;
             pointsCounter(score);
             player.reset();
-        }else if (score < 0){
+        } else if (score < 0) {
             score = 0;
             pointsCounter(score);
         }
@@ -140,17 +149,22 @@ function checkCollisions() {
 }
 
 function gameStart() {
+    score = 0;
+    pointsCounter(score);
     console.log("Game start");
     timer = game_duration / 1000;
     timerEl.innerHTML = timer;
-    gameInterval = setInterval(function(){
+    gameInterval = setInterval(function () {
         timer -= 1;
         if (timer <= 0) {
-            alert('Game Over');
+            //alert('Game Over');
             gameStop();
+            $('#modalDiv').removeClass('display-none');
+            $('#modalDiv').addClass('display-block');
         }
         timerEl.innerHTML = timer;
     }, 1000);
+    window.stopGame = false;
 }
 
 function gameStop() {
@@ -158,5 +172,6 @@ function gameStop() {
     timerEl.innerHTML = 0;
     clearInterval(gameInterval); // stop timer
     player.reset(0); // move player to start position
+    window.stopGame = true;
 }
 

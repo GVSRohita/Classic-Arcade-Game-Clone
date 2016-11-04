@@ -5,50 +5,58 @@
         <title>Effective JavaScript: Frogger</title>
         <link rel="stylesheet" href="css/style.css">
         <link rel="stylesheet" href="css/mystyle.css">
+        <script src="js/jquery/jQuery.js"></script>
     </head>
     <body class="my-body">
+        <div id="modalDiv" class="display-none">
+            <header>
+                <h1>Classic Arcade Game Clone</h1>
+            </header>
+            <div id="mainDivModal" class="container-modal">
+                <div id="leftBoxModal">                    
+                </div>            
+                <div id="centerBoxModal">
+                    <h2 class="new-score">
+                        Your Score: <span id="pointsModal">0</span></h2>
+                    <button id="buttonStart" class="my-button">Start New Game</button></div>
+                    <div id="rightBoxModal">                        
+                </div>
+            </div>
+        </div>
         <header>
             <h1>Classic Arcade Game Clone</h1>
         </header>
         <main id="mainDiv" class="container">
             <div id="topBox">
-                </div>
+            </div>
             <div id="leftBox">               
                 <h2 class="additional-information">Score:
                     <span id="points" class="points-counter">0</span>
                 </h2>
-
-                <h2  class="additional-information">
-                    <span>Remaining Time: <span id="timer" class="time-counter">30</span>
-                </h2>                
-                <h2>Game Instructions</h2>
-                <ul>
-                    <li style="margin-left: 2px;">aaaaaa</li>
-                    <li>aaaaaa</li>
-                    <li>aaaaaa</li>
-                    <li>aaaaaa</li>
-                    <li>aaaaaa</li>
-                    <li>aaaaaa</li>
-                </ul>
-            </div>
+                <h2 class="additional-information">
+                    <span>Remaining Time: <span id="timer" class="time-counter"></span>
+                </h2>
+                <div class="instructions">
+                    <h2>Game Instructions</h2>
+                    <p style="margin-left: 2px;">Move the player with the help of arrow keys</p>
+                    <p>On reaching the destination you will be awarded 10 points</p>
+                    <p>Beware of the bugs. If the bug collides with the player, you will lose 5 points</p>
+                    <p>Click the "Start" button when you are ready to play the game</p>
+                    <p>Click the "Reset" button to reset your game</p>
+                    <p>You have only 30 seconds time to play the game, So go ahead and maximize your score...All the best!</p>
+                </div>
+            </div>            
             <div id="centerBox"></div>
             <div id="rightBox">
                 <div id="buttons">
-                    <button id="buttonStart" class="my-button">Start</button>
-                    <button id="buttonStop" class="my-button">Stop</button>
-                </div>                
-                <br><br><br><br><br><br><br><br><br><br><br><br>
+                    <button id="buttonStop" class="my-button">Reset</button>
+                </div>
+                <div class="space"></div>
                 <h3><span class="my-name-label">Created by:</span> <span class="my-name">G.V.Sri Rohita</span></h3>
-                <p></p>
-                <a href="http://gvsrohita.github.io/ClassicAradeClone/" target="_blank">See this on Github</a>
+                <p><a href="https://gvsrohita.github.io/Classic-Arcade-Game-Clone/" target="_blank">See this on Github</a></p>
                 <p>Visit My Other Projects :-) also</p>
-                <a href="http://gvsrohita.github.io/OnlineResume/" target="_blank">Online Resume </a>
-                <p></p>
-                <a href="https://gvsrohita.github.io/PortfolioSite/" target="_blank">Portfolio Site </a>
-                <br>
-                <br>
-                <br>
-                <br>               
+                <p><a href="http://gvsrohita.github.io/OnlineResume/" target="_blank">Online Resume </a></p>
+                <p><a href="https://gvsrohita.github.io/PortfolioSite/" target="_blank">Portfolio Site </a></p>
                 <span>Share <a href='mailto:gvsrohita@gmail.com?Subject=Awesome!' target='_blank'>Your Experience!</a></span>
             </div>
         </main>
@@ -57,8 +65,18 @@
         <script src="js/engine.js"></script>
         <script src="js/myadditions.js"></script>
         <script>
-            document.getElementById("buttonStart").addEventListener("click", gameStart);
-            document.getElementById("buttonStop").addEventListener("click", gameStop);
+            gameStart();
+            //document.getElementById("buttonStart").addEventListener("click", gameStart);
+            $("#buttonStop").click(function () {
+                gameStop();
+                gameStart();
+            });
+            
+            $("#buttonStart").click(function () {
+                $("#modalDiv").removeClass("display-block");
+                $("#modalDiv").addClass("display-none");
+                gameStart();
+            });
         </script>
     </body>
 </html>
