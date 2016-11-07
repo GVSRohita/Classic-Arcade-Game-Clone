@@ -19,4 +19,4 @@ In this game you have a Player and Enemies (Bugs). And, the player should cross 
 
 You can [PLAY IT HERE] (https://gvsrohita.github.io/Classic-Arcade-Game-Clone/)
 
-![Classic Arcade Game Clone](https://github.com/GVSRohita/Classic-Arcade-Game-Clone/blob/image/images/gameclone.png)
+![Classic Arcade Game Clone](https://github.com/GVSRohita/Classic-Arcade-Game-Clone/blob/image/images/game-clone-for-readme.png)
