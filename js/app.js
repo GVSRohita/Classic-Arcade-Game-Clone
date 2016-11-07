@@ -1,5 +1,5 @@
 // Declaring the duration
-var game_duration = 5000;
+var game_duration = 30000;
 var game_duration_sec = game_duration / 1000;
 var stopGame = true;
 // Declaration of the start positions of player using x and y coordinates
