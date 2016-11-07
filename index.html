@@ -15,9 +15,11 @@
             <div id="mainDivModal" class="container-modal">
                 <div id="leftBoxModal" class="left-box"></div>            
                 <div id="centerBoxModal" class="center-box">
-                    <h2 class="new-score">
-                        Your Score: <span id="pointsModal">0</span></h2>
-                    <button id="buttonOK" class="my-button">Visit Again!</button></div>
+                    <div style="padding: 200px 0 0 0;">
+                        <h2><span class="new-score">Your Score: </span><span id="pointsModal" class="score">0</span></h2>
+                        <button id="buttonOK" class="my-button">Visit Again!</button>
+                    </div>
+                </div>
                 <div id="rightBoxModal" class="right-box"></div>
             </div>
         </div>
@@ -26,22 +28,27 @@
                 <h2 class="score">Score:
                     <span id="points" class="points-counter">0</span>
                 </h2>
+                <hr>
                 <h2 class="timer">
                     Remaining Time: <span id="timer" class="time-counter"></span>
                 </h2>
+                <hr>
                 <div id="instructionsDiv" class="instructions">
                     <h2>Game Instructions</h2>
                 </div>
             </div>
             <div id="centerBox" class="center-div"></div>
-            <div id="rightBox" class="right-div">                
-                <button id="buttonStart" class="my-button">Start</button>
+            <div id="rightBox" class="right-div">
+                <div class="button-div">                   
+                    <button id="buttonStart" class="my-button">Start</button>
+                </div>
                 <div class="space"></div>
                 <h3><span class="my-name-label">Created by:</span> <span class="my-name">G. V. Sri Rohita</span></h3>
-                <p>Play this on <i><a href="https://gvsrohita.github.io/Classic-Arcade-Game-Clone/" target="_blank">Github</a></i></p>
-                               
+                <hr>
+                <p>Play this on <strong><em><a href="https://gvsrohita.github.io/Classic-Arcade-Game-Clone/" target="_blank">Github</a></em></strong></p>
+                <hr>
                 <div id="otherProjectsDiv" class="instructions">
-                    <h3><strong>My Other Projects :-)</strong></h3> 
+                    <h3><strong>My Other Projects</strong></h3> 
                 </div>
             </div>
         </main>
@@ -50,20 +57,23 @@
         <script src="js/app.js"></script>
         <script src="js/engine.js"></script>
         <script src="js/myadditions.js"></script>
+        <script src="js/gamecontrolobjects.js"></script>
         <script>
 <!--The function gameStart is called by clicking the start button -->
             $('#buttonStart').click(function () {
                 $("#modalDiv").removeClass("display-block");
                 $("#modalDiv").addClass("display-none");
                 $("#buttonStart").addClass('display-none');
-                gameStart();
+                //gameStart();
+                gameObj.gameStart();
             });
 <!--The function initialiseGame is called by clicking the Visit again button -->
             $("#buttonOK").click(function () {
                 $("#buttonStart").removeClass('display-none');
                 $("#modalDiv").removeClass("display-block");
                 $("#modalDiv").addClass("display-none");
-                initialiseGame();
+                //initialiseGame();                
+                gameObj.gameInitialize();
             });
         </script>
     </body>

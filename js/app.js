@@ -1,9 +1,19 @@
-// Declaring the duration variable
-var game_duration = 10000;
+// Declaring the duration
+var game_duration = 5000;
 var game_duration_sec = game_duration / 1000;
+var stopGame = true;
+// Declaration of the start positions of player using x and y coordinates
+var startX = 200;
+var startY = 400;
+// Declaration of the score in order to use it in the upcoming classes
+var score = 0;
+// Declaration for timer control
+var timer;
 $('#timer').text(game_duration_sec);
 // Declaring the global variable
-window.stopGame = true;
+
+var allEnemies = [];
+
 // Enemies our player must avoid
 var Enemy = function (x, y, speed) {
     // Variables applied to each of our instances go here,
@@ -40,15 +50,6 @@ Enemy.prototype.reset = function () {
     this.x = -200;
 };
 
-// Declaration of the start positions of player using x and y coordinates
-var startX = 200;
-var startY = 400;
-// Declaration of the score in order to use it in the upcoming classes
-var score = 0;
-var timerEl = document.getElementById('timer');
-// Declaration of the timer in order to use it in the upcoming classes
-var timer;
-
 // The player function
 var Player = function () {
     this.x = startX;
@@ -66,7 +67,8 @@ Player.prototype.update = function () {
         this.y = 400;
     } else if (this.y <= 0) {
         score += 10; //incrementing the score by 10 points if the player reaches water
-        pointsCounter(score);
+        //pointsCounter(score);
+        pointsCounter();
         this.reset(); // resetting the player to the original position
     }
 };
@@ -77,48 +79,10 @@ Player.prototype.reset = function () {
     this.y = startY;
 };
 
-// Function to display the score
-function pointsCounter() {
-    var pointContainer1 = document.getElementById("points");
-    var pointContainer2 = document.getElementById("pointsModal");
-    pointContainer1.innerHTML = score;
-    pointContainer2.innerHTML = score;
-}
-
 // Draws the player on the screen, required method for game
 Player.prototype.render = function () {
     ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
 };
-
-// Now instantiate your objects.
-// Place all enemy objects in an array called allEnemies
-// Place the player object in a variable called player
-
-//Placed all enemy objects in an array called allEnemies
-var allEnemies = [];
-for (var i = 0; i < 3; i++) {
-    var enemyX = Math.floor(Math.random() * 30);
-    var enemyY = 65 + 80 * i;
-    var enemySpeed = Math.floor(Math.random() * 150) + 50;
-    allEnemies.push(new Enemy(enemyX, enemyY, enemySpeed));
-}
-
-//Placed the player object in a variable called player
-var player = new Player();
-
-// This listens for key presses and sends the keys to your
-// Player.handleInput() method. You don't need to modify this.
-document.addEventListener('keyup', function (e) {
-    var allowedKeys = {
-        37: 'left',
-        38: 'up',
-        39: 'right',
-        40: 'down'
-    };
-    if (window.stopGame === false) {
-        player.handleInput(allowedKeys[e.keyCode]);
-    }
-});
 
 //Function initialised to handle the input through keypress
 Player.prototype.handleInput = function (keyPress) {
@@ -144,47 +108,44 @@ function checkCollisions() {
                 (allEnemies[i].y) <= player.y + 35 &&
                 (allEnemies[i].y + 35) >= (player.y)) {
             score -= 5;//to reduce the score
-            pointsCounter(score);
+            //pointsCounter(score);
+            pointsCounter();
             player.reset();//to reset the player
         } else if (score < 0) {
-            score = 0;//not to reduce the score below value 0
-            pointsCounter(score);
+            score = 0;//not to reduce the score below value 
+            //pointsCounter(score);
+            pointsCounter();
         }
     }
 }
 
-//To start the game
-function gameStart() {
-    score = 0;
-    pointsCounter(score);
-    console.log("Game start"); // Code debugging
-    timer = game_duration / 1000;
-    timerEl.innerHTML = timer;
-    gameInterval = setInterval(function () {
-        timer -= 1; //reducing the time by 1 second
-        if (timer <= 0) {
-            gameStop(); // to stop the game
-            $('#modalDiv').removeClass('display-none'); // Not to display the present div
-            $('#modalDiv').addClass('display-block'); // To display a new div after the whole count down of the timer
-        }
-        timerEl.innerHTML = timer;
-    }, 1000);
-    window.stopGame = false; //changing the value of the global variable
+// Function to display the score
+function pointsCounter() {
+    $('#points').text(score);
+    $('#pointsModal').text(score);
 }
 
-//To stop the game
-function gameStop() {
-    console.log("Game over"); // Code debugging
-    timerEl.innerHTML = 0;
-    clearInterval(gameInterval); // stop timer
-    player.reset(0); // move player to start position
-    window.stopGame = true; // Changing the value of the global variable
+//Placed all enemy objects in the array called allEnemies
+for (var i = 0; i < 3; i++) {
+    var enemyX = Math.floor(Math.random() * 30);
+    var enemyY = 65 + 80 * i;
+    var enemySpeed = Math.floor(Math.random() * 150) + 50;
+    allEnemies.push(new Enemy(enemyX, enemyY, enemySpeed));
 }
 
-//To initialise the game
-function initialiseGame() {
-    window.stopGame = true;// Changing the value of the global variable
-    score = 0;// Reinitialising the score to 0
-    pointsCounter(score);
-    console.log("Game initialised"); // Code debugging
-}
+//Placed the player object in a variable called player
+var player = new Player();
+
+// This listens for key presses and sends the keys to your
+// Player.handleInput() method. You don't need to modify this.
+document.addEventListener('keyup', function (e) {
+    var allowedKeys = {
+        37: 'left',
+        38: 'up',
+        39: 'right',
+        40: 'down'
+    };
+    if (stopGame === false) {
+        player.handleInput(allowedKeys[e.keyCode]);
+    }
+});
