@@ -1,7 +1,7 @@
 Welcome to Classic Arcade Game Clone - by G V Sri Rohita
 ========================================================
 
-## The Intro:
+## Introduction:
 In this game you have a Player and Enemies (Bugs). And, the player should cross over to the other-side without colliding with the moving bugs
 
 ### The details are as follows:
