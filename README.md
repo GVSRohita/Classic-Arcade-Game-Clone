@@ -1,6 +1,22 @@
-frontend-nanodegree-arcade-game
-===============================
+Welcome to Classic Arcade Game Clone - by G V Sri Rohita
+========================================================
 
-Students should use this [rubric](https://review.udacity.com/#!/projects/2696458597/rubric) for self-checking their submission. Make sure the functions you write are **object-oriented** - either class functions (like Player and Enemy) or class prototype functions such as Enemy.prototype.checkCollisions, and that the keyword 'this' is used appropriately within your class and class prototype functions to refer to the object the function is called upon. Also be sure that the **readme.md** file is updated with your instructions on both how to 1. Run and 2. Play your arcade game.
+## The Intro:
+In this game you have a Player and Enemies (Bugs). And, the player should cross over to the other-side without colliding with the moving bugs
 
-For detailed instructions on how to get started, check out this [guide](https://docs.google.com/document/d/1v01aScPjSWCCWQLIpFqvg3-vXLH2e8_SZQKC8jNO0Dc/pub?embedded=true).
+### The details are as follows:
+
+- When you are ready to play the game press the `Start` button.
+- The player can move *left, right, up* and *down* using the arrow-keys.
+- The enemies move in varying speeds on the paved block portion of the scene. Once a player collides with an enemy the player moves back to the start square.
+- The goal of the player is to reach the otherside to the water. It fetches him _10 points_. 
+- And, In the given time period of *30 seconds*, you have to maximise your score.
+- When the player collides with the enemy bug, he has to _forfeit five points_ too in addition to returning to original position.
+- You can restart the game by pressing the `Visit Again!` button after completion of the present game.
+- Now, Go ahead ahead and maximize your score.
+
+**GOOD LUCK!!!**
+
+You can [PLAY IT HERE] (https://gvsrohita.github.io/Classic-Arcade-Game-Clone/)
+
+![Classic Arcade Game Clone](https://github.com/GVSRohita/Classic-Arcade-Game-Clone/blob/image/images/gameclone.png)

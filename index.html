@@ -7,75 +7,63 @@
         <link rel="stylesheet" href="css/mystyle.css">
         <script src="js/jquery/jQuery.js"></script>
     </head>
-    <body class="my-body">
-        <div id="modalDiv" class="display-none">
-            <header>
-                <h1>Classic Arcade Game Clone</h1>
-            </header>
-            <div id="mainDivModal" class="container-modal">
-                <div id="leftBoxModal">                    
-                </div>            
-                <div id="centerBoxModal">
-                    <h2 class="new-score">
-                        Your Score: <span id="pointsModal">0</span></h2>
-                    <button id="buttonStart" class="my-button">Start New Game</button></div>
-                    <div id="rightBoxModal">                        
-                </div>
-            </div>
-        </div>
+    <body>
         <header>
             <h1>Classic Arcade Game Clone</h1>
         </header>
-        <main id="mainDiv" class="container">
-            <div id="topBox">
+        <div id="modalDiv" class="display-none">
+            <div id="mainDivModal" class="container-modal">
+                <div id="leftBoxModal" class="left-box"></div>            
+                <div id="centerBoxModal" class="center-box">
+                    <h2 class="new-score">
+                        Your Score: <span id="pointsModal">0</span></h2>
+                    <button id="buttonOK" class="my-button">Visit Again!</button></div>
+                <div id="rightBoxModal" class="right-box"></div>
             </div>
-            <div id="leftBox">               
-                <h2 class="additional-information">Score:
+        </div>
+        <main id="mainDiv" class="container">
+            <div id="leftBox" class="left-div">
+                <h2 class="score">Score:
                     <span id="points" class="points-counter">0</span>
                 </h2>
-                <h2 class="additional-information">
-                    <span>Remaining Time: <span id="timer" class="time-counter"></span>
+                <h2 class="timer">
+                    Remaining Time: <span id="timer" class="time-counter"></span>
                 </h2>
-                <div class="instructions">
+                <div id="instructionsDiv" class="instructions">
                     <h2>Game Instructions</h2>
-                    <p style="margin-left: 2px;">Move the player with the help of arrow keys</p>
-                    <p>On reaching the destination you will be awarded 10 points</p>
-                    <p>Beware of the bugs. If the bug collides with the player, you will lose 5 points</p>
-                    <p>Click the "Start" button when you are ready to play the game</p>
-                    <p>Click the "Reset" button to reset your game</p>
-                    <p>You have only 30 seconds time to play the game, So go ahead and maximize your score...All the best!</p>
                 </div>
-            </div>            
-            <div id="centerBox"></div>
-            <div id="rightBox">
-                <div id="buttons">
-                    <button id="buttonStop" class="my-button">Reset</button>
-                </div>
+            </div>
+            <div id="centerBox" class="center-div"></div>
+            <div id="rightBox" class="right-div">                
+                <button id="buttonStart" class="my-button">Start</button>
                 <div class="space"></div>
-                <h3><span class="my-name-label">Created by:</span> <span class="my-name">G.V.Sri Rohita</span></h3>
-                <p><a href="https://gvsrohita.github.io/Classic-Arcade-Game-Clone/" target="_blank">See this on Github</a></p>
-                <p>Visit My Other Projects :-) also</p>
-                <p><a href="http://gvsrohita.github.io/OnlineResume/" target="_blank">Online Resume </a></p>
-                <p><a href="https://gvsrohita.github.io/PortfolioSite/" target="_blank">Portfolio Site </a></p>
-                <span>Share <a href='mailto:gvsrohita@gmail.com?Subject=Awesome!' target='_blank'>Your Experience!</a></span>
+                <h3><span class="my-name-label">Created by:</span> <span class="my-name">G. V. Sri Rohita</span></h3>
+                <p>Play this on <i><a href="https://gvsrohita.github.io/Classic-Arcade-Game-Clone/" target="_blank">Github</a></i></p>
+                               
+                <div id="otherProjectsDiv" class="instructions">
+                    <h3><strong>My Other Projects :-)</strong></h3> 
+                </div>
             </div>
         </main>
+        <script src="js/otherdisplay.js"></script>
         <script src="js/resources.js"></script>
         <script src="js/app.js"></script>
         <script src="js/engine.js"></script>
         <script src="js/myadditions.js"></script>
         <script>
-            gameStart();
-            //document.getElementById("buttonStart").addEventListener("click", gameStart);
-            $("#buttonStop").click(function () {
-                gameStop();
-                gameStart();
-            });
-            
-            $("#buttonStart").click(function () {
+<!--The function gameStart is called by clicking the start button -->
+            $('#buttonStart').click(function () {
                 $("#modalDiv").removeClass("display-block");
                 $("#modalDiv").addClass("display-none");
+                $("#buttonStart").addClass('display-none');
                 gameStart();
+            });
+<!--The function initialiseGame is called by clicking the Visit again button -->
+            $("#buttonOK").click(function () {
+                $("#buttonStart").removeClass('display-none');
+                $("#modalDiv").removeClass("display-block");
+                $("#modalDiv").addClass("display-none");
+                initialiseGame();
             });
         </script>
     </body>
